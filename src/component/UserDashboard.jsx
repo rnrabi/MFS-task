@@ -1,16 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 const UserDashboard = () => {
     return (
         <div className="md:flex justify-between items-start md:w-11/12 mx-auto">
-            <div className="border-r-2 md:h-screen md:w-1/4">
-                <ul>
-                    <li>Send Money</li>
-                    <li>Cash Out</li>
-                    <li>Cash In</li>
-                    <li>Balance Inquiry</li>
-                    <li>Transaction History</li>
+            <div className="border-r-2 md:h-screen md:w-1/4 py-8">
+                <ul className="space-y-12">
+                    <li className="shadow-lg text-center"><Link>Send Money</Link></li>
+                    <li className="shadow-lg text-center"><Link>Cash Out</Link></li>
+                    <li className="shadow-lg text-center"><Link>Cash In</Link></li>
+                    <li className="shadow-lg text-center"><Link>Balance Inquiry</Link></li>
+                    <li className="shadow-lg text-center"><Link>Transaction History</Link></li>
                 </ul>
             </div>
 
