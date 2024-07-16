@@ -5,9 +5,8 @@ import MainLayout from "./MainLayout";
 import Register from "./page/Register";
 import Login from "./page/Login";
 import Home from "./page/Home";
-// import UserDashboardHome from "./component/UserDashboardHome";
-// import AgentDashboard from "./component/AgentDashboard";
 import DashboardHome from "./component/DashboardHome";
+import HomeLayout from "./HomeLayout";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +15,7 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                // element:<Home></Home>
+                element:<HomeLayout></HomeLayout>
             },
             {
                 path:'/register',
@@ -28,6 +27,7 @@ export const router = createBrowserRouter([
             }
         ]
     },
+
     {
         path:'/dashboard',
         element:<Home></Home>,
