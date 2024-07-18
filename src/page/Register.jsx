@@ -1,11 +1,14 @@
 import { useState } from "react";
 import useAxiosPublic from "../hook/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
     const [errorPin, setErrorPin] = useState('')
     const [errorMobile, setErrorMobile] = useState('')
     const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
+
     const handleRegister = async (e) => {
         e.preventDefault()
         const form = e.target;
@@ -25,8 +28,9 @@ const Register = () => {
         const user = { name, pin, mobile, email, roll: "user", status: 'pending' }
         const { data } = await axiosPublic.post('/users', user);
         console.log(data)
+        localStorage.setItem('token', data.token)
 
-
+        navigate('/dashboard')
 
 
         setErrorPin('')
@@ -39,7 +43,7 @@ const Register = () => {
             <section className="p-6 dark:bg-gray-100 dark:text-gray-800">
                 <div className="container mx-auto text-center ">
                     <div className=" md:w-1/3 px-6 py-16 rounded-md sm:px-12 md:px-16  dark:bg-gray-50 shadow-lg mx-auto">
-                      
+
                         <h1 className="text-3xl font-extrabold dark:text-gray-900 my-5">Register Here</h1>
 
                         <form onSubmit={handleRegister} className="self-stretch space-y-3">

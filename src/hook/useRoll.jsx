@@ -4,11 +4,11 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useRoll = () => {
     const axiosPublic = useAxiosPublic()
-    const pin = 98765
+    const email = 'razaulkpi@gmai.com'
     const { data: roll } = useQuery({
         queryKey: ['roll'],
         queryFn: async () => {
-            const { data } =await axiosPublic.get(`/roll/${pin}`)
+            const { data } =await axiosPublic.get(`/roll/${email}`)
             return data;
         }
     })
