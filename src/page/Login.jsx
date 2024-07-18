@@ -1,11 +1,16 @@
+import useAxiosPublic from "../hook/useAxiosPublic";
 
 
 const Login = () => {
-    const handleLogin = e => {
+    const axiosPublic = useAxiosPublic()
+    const handleLogin = async (e) => {
         e.preventDefault()
         const mobEmail = e.target.mobEmail.value;
         const pin = e.target.pin.value;
         console.log(mobEmail, pin)
+        const logUser = { mobEmail, pin }
+        const { data } = await axiosPublic.post('/login', logUser);
+        console.log(data)
     }
 
     return (
