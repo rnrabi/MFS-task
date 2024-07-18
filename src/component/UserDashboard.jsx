@@ -1,11 +1,10 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
 import Navber from "./Navber";
-import { useContext } from "react";
-import { authContext } from "../hook/context/ContextApi";
 
 
 const UserDashboard = () => {
-    const { token } = useContext(authContext)
+    // const { token } = useContext(authContext)
+    const token = localStorage.getItem('token')
     console.log(token)
     if (!token) {
         return <Navigate to='/login'></Navigate>

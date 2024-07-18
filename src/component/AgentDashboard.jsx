@@ -1,8 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import Navber from "./Navber";
 
 
 const AgentDashboard = () => {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    if (!token) {
+        return <Navigate to='/login'></Navigate>
+    }
+
     return (
         <>
             <div>

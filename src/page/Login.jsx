@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../hook/useAxiosPublic";
 
 
 const Login = () => {
     const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
+
     const handleLogin = async (e) => {
         e.preventDefault()
         const mobEmail = e.target.mobEmail.value;
@@ -11,6 +14,14 @@ const Login = () => {
         const logUser = { mobEmail, pin }
         const { data } = await axiosPublic.post('/login', logUser);
         console.log(data)
+        localStorage.setItem('token', data.token)
+        const token = localStorage.getItem('token')
+        if (!token) {
+            return <span className="loading loading-bars loading-lg"></span>
+        }
+        if (data.message == 'success' && token) {
+            navigate('/dashboard')
+        }
     }
 
     return (
