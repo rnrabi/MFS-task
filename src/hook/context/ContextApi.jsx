@@ -4,19 +4,23 @@ import PropTypes from 'prop-types';
 export const authContext = createContext(null)
 
 const ContextApi = ({ children }) => {
+    const[logedUser , setLogedUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [token, setToken] = useState(null)
 
     useEffect(() => {
         const token = localStorage.getItem('token')
         setToken(token)
-        console.log(token)
+        // console.log(token)
         setLoading(false)
     }, [])
+    console.log(logedUser)
 
     const authInfo = {
         token,
-        loading
+        loading,
+        setLogedUser,
+        logedUser
     }
 
     return (

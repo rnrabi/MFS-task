@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAxiosPublic from "../hook/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -42,7 +42,7 @@ const Register = () => {
         <div>
             <section className="p-6 dark:bg-gray-100 dark:text-gray-800">
                 <div className="container mx-auto text-center ">
-                    <div className=" md:w-1/3 px-6 py-16 rounded-md sm:px-12 md:px-16  dark:bg-gray-50 shadow-lg mx-auto">
+                    <div className=" md:w-1/3 px-6 py-5 rounded-md sm:px-12 md:px-16  dark:bg-gray-50 shadow-lg mx-auto">
 
                         <h1 className="text-3xl font-extrabold dark:text-gray-900 my-5">Register Here</h1>
 
@@ -70,8 +70,8 @@ const Register = () => {
                             </div>
                             <button className="w-full py-2 font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Register</button>
                         </form>
+                        <p className="text-center pb-3 mt-7">Are you new? <Link to='/login' className="text-blue-600">Login</Link></p>
                     </div>
-
                 </div>
             </section>
         </div>

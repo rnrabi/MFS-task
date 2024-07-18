@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../hook/useAxiosPublic";
 
 
@@ -13,7 +13,10 @@ const Login = () => {
         console.log(mobEmail, pin)
         const logUser = { mobEmail, pin }
         const { data } = await axiosPublic.post('/login', logUser);
-        console.log(data)
+        console.log(data.user)
+        // setLogedUser(data.user)
+        localStorage.setItem('user',JSON.stringify(data.user))
+
         localStorage.setItem('token', data.token)
         const token = localStorage.getItem('token')
         if (!token) {
@@ -53,7 +56,8 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
-                    </div>
+                        <p className="text-center pb-3">Are you new? <Link to='/register' className="text-blue-600">Register</Link></p>
+                    </div>                 
                 </div>
             </div>
         </div>

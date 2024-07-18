@@ -2,10 +2,12 @@ import { Link, Navigate, Outlet } from "react-router-dom";
 import Navber from "./Navber";
 
 
+
 const UserDashboard = () => {
-    // const { token } = useContext(authContext)
+    const user = JSON.parse(localStorage.getItem('user'))
     const token = localStorage.getItem('token')
-    console.log(token)
+    console.log(user)
+
     if (!token) {
         return <Navigate to='/login'></Navigate>
     }
@@ -33,7 +35,7 @@ const UserDashboard = () => {
 
                             </div>
                             <div className="flex flex-col justify-center align-middle">
-                                <p className="text-3xl font-semibold leading-none">name</p>
+                                <p className="text-2xl font-semibold leading-none">{user?.name}</p>
                             </div>
                         </div>
 
@@ -42,7 +44,7 @@ const UserDashboard = () => {
 
                             </div>
                             <div className="flex flex-col justify-center align-middle">
-                                <p className="text-3xl font-semibold leading-none">email</p>
+                                <p className="text-xl font-semibold leading-none">{user?.email}</p>
                             </div>
                         </div>
 
@@ -51,7 +53,7 @@ const UserDashboard = () => {
 
                             </div>
                             <div className="flex flex-col justify-center align-middle">
-                                <p className="text-3xl font-semibold leading-none">01774720271</p>
+                                <p className="text-2xl font-semibold leading-none">{user?.mobile}</p>
                             </div>
                         </div>
 
@@ -60,7 +62,7 @@ const UserDashboard = () => {
 
                             </div>
                             <div className="flex flex-col justify-center align-middle">
-                                <p className="text-3xl font-semibold leading-none">Balance</p>
+                                <p className="text-2xl font-semibold leading-none">Balance</p>
                                 <p className="capitalize">100tk</p>
                             </div>
                         </div>
